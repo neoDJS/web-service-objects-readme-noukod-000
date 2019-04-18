@@ -13,8 +13,8 @@ class SearchesController < ApplicationController
     client_secret = "0NNKMRWRYLCKLPSEE3G10I33WV0BTYXEN2JCJ41TVKKWB52Y"
 
     foursquare = FoursquareService.new.foursquare(client_id, client_secret, params[:zipcode])
-    if @resp.success?
-      @venues = body["response"]["venues"]
+    if foursquare[:venues]
+      @venues = foursquare[:venues]
     else
       @error = body["meta"]["errorDetail"]
     end
