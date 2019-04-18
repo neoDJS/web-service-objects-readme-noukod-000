@@ -1,7 +1,7 @@
 class TipsController < ApplicationController
   def index
-    foursquare = FoursquareService.new.list_tips()
-    @results = JSON.parse(resp.body)["response"]["list"]["listItems"]["items"]
+    foursquare = FoursquareService.new    
+    @results = foursquare.list_tips(session[:token])
   end
 
   def create
