@@ -35,10 +35,12 @@ class FoursquareService
     if resp.success?
       foursquare[venues] = body["response"]["venues"]
     else
-      @error = body["meta"]["errorDetail"]
+      foursquare[error] = body["meta"]["errorDetail"]
     end
 
     rescue Faraday::TimeoutError
-      @error = "There was a timeout. Please try again."
+      foursquare[error] = "There was a timeout. Please try again."
+
+    foursquare
   end
 end
