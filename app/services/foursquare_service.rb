@@ -43,4 +43,15 @@ class FoursquareService
 
     foursquare
   end
+
+  def create_tip(token, venueId, tip)
+    resp = Faraday.post("https://api.foursquare.com/v2/tips/add") do |req|
+      req.params['oauth_token'] = token
+      req.params['v'] = '20160201'
+      req.params['venueId'] = venueId
+      req.params['text'] = tip
+    end
+
+    redirect_to tips_path
+  end
 end
