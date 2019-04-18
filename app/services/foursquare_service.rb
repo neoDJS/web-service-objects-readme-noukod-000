@@ -36,10 +36,8 @@ class FoursquareService
     else
       @error = body["meta"]["errorDetail"]
     end
-    render 'search'
 
     rescue Faraday::TimeoutError
       @error = "There was a timeout. Please try again."
-      render 'search'
   end
 end
