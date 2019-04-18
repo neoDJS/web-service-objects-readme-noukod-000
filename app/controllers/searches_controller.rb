@@ -16,12 +16,8 @@ class SearchesController < ApplicationController
     if foursquare[:venues]
       @venues = foursquare[:venues]
     else
-      @error = body["meta"]["errorDetail"]
+      @error = foursquare[:error]
     end
     render 'search'
-
-    rescue Faraday::TimeoutError
-      @error = "There was a timeout. Please try again."
-      render 'search'
   end
 end
