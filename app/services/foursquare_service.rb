@@ -52,6 +52,5 @@ class FoursquareService
       req.params['text'] = tip
     end
 
-    redirect_to tips_path
   end
 end
